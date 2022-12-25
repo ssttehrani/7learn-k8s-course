@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: app-v2
+  namespace: test
+  labels:
+    name: app
+spec:
+  replicas: 3
+  selector:
+    name: app
+    # pod-template-version: "2"
+  template:
+    metadata:
+      name: app
+      labels:
+        name: app
+        # pod-template-version: "2"
+    spec:
+      containers:
+      - image: ssttehrani/7learn-k8s-demo-app:v2
+        name: app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: http

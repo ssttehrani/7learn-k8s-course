@@ -1,0 +1,2 @@
+https://kubernetes.io/docs/reference/kubernetes-api/
+https://learnxinyminutes.com/docs/yaml/

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-db
+  namespace: test
+spec:
+  type: ExternalName
+  # Not a valid domain!
+  externalName: redis.comp.com
+  ports:
+  - port: 6379

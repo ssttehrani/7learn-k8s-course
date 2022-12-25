@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: content-generator-config
+  namespace: test
+  labels:
+    name: content-generator
+data:
+  interval: "10"
+  # custom.conf: |
+  #   server {
+  #     listen 80;
+  #     server_name _;
+
+  #     gzip on;
+  #     gzip_types text/plain text/html;
+
+  #     location / {
+  #       root /usr/share/nginx/html;
+  #       index index.html index.htm;
+  #     }
+  #   }

@@ -1,0 +1,4 @@
+https://kubernetes.io/docs/tasks/tools/
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+https://kubernetes.io/docs/setup/production-environment/tools/kubespray/
+https://kind.sigs.k8s.io/docs/user/quick-start/

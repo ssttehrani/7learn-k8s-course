@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: content-generator
+  namespace: test
+  labels:
+    name: content-generator
+spec:
+  containers:
+  - image: 7learn-k8s-content-gen:v2
+    name: content-generator
+    args: ["1"]
+    volumeMounts:
+    - name: content
+      mountPath: /var/contents
+  volumes:
+  - name: content
+    emptyDir: {}

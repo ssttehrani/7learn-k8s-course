@@ -1,0 +1,1 @@
+https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files

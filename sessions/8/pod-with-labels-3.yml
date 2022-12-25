@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod-with-labels-3
+  labels:
+    name: demo
+    project: B
+    env: stg
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: redis-db
+  namespace: test
+subsets:
+- addresses:
+  # Not a valid IP address!
+  - ip: 172.16.69.34
+  ports:
+  - port: 6379

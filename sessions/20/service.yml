@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  namespace: test
+spec:
+  selector:
+    name: app
+  ports:
+  - port: 80
+    targetPort: http
+    # NodePorts are in the 30000-32767 range by default.
+    nodePort: 30100
+  type: NodePort
+  # externalTrafficPolicy: Local

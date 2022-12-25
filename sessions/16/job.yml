@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: simple-job
+  namespace: test
+  labels:
+    name: simple-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: simple-job
+        image: busybox:latest
+        command: ["sleep",  "5"]
+      restartPolicy: Never
+  completions: 5
+  parallelism: 2
+  #activeDeadlineSeconds: 100
+  backoffLimit: 4

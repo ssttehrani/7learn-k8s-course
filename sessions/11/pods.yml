@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-1-a
+  namespace: test
+  labels:
+    name: app-1
+    project: A
+  annotations:
+    created-by: team-A
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-2-a
+  namespace: test
+  labels:
+    name: app-2
+    project: A
+  annotations:
+    created-by: team-A
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-1-b
+  namespace: test
+  labels:
+    name: app-1
+    project: B
+  annotations:
+    created-by: team-B
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-2-b
+  namespace: test
+  labels:
+    name: app-2
+    project: B
+  annotations:
+    created-by: team-B
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-special
+  namespace: test
+  labels:
+    name: app-special
+    project: C
+  annotations:
+    created-by: team-C
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    lifecycle:
+      preStop:
+        exec:
+          command:
+          - /bin/sh
+          - -c
+          - sleep 15
+  terminationGracePeriodSeconds: 120

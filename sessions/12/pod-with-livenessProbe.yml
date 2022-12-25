@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: test
+  labels:
+    name: app
+    project: A
+  annotations:
+    created-by: team-A
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:unhealthy
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+      name: http
+    livenessProbe:
+      httpGet:
+        # scheme: HTTP
+        # host: test.com
+        port: http
+        path: /
+        # httpHeaders:
+          # - name: Host
+          #   value: test.com
+          # - name: User-Agent
+          #   value: kube-probe/1.25
+          # - name: Accept
+          #   value: "*/*"
+      # tcpSocket:
+      #   port: http
+      # exec:
+      #   command:
+      #   - cat
+      #   - /tmp/healthy
+      # initialDelaySeconds: 30
+      # periodSeconds: 1
+      # timeoutSeconds: 1
+      # successThreshold: 1
+      # failureThreshold: 3
+      #  Override pod-level terminationGracePeriodSeconds #
+      # terminationGracePeriodSeconds: 60
+    # pod-level
+  # terminationGracePeriodSeconds: 3600

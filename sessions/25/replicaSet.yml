@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app
+  namespace: test
+  labels:
+    name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: app
+  template:
+    metadata:
+      name: app
+      labels:
+        name: app
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          name: http
+        volumeMounts:
+        - name: content
+          mountPath: /usr/share/nginx/html
+          readOnly: true
+      - image: 7learn-k8s-content-gen:v1
+        name: content-generator
+        volumeMounts:
+        - name: content
+          mountPath: /var/contents
+      volumes:
+      - name: content
+        emptyDir: {}
+          # medium: Memory

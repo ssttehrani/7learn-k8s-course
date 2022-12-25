@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app
+  namespace: test
+  labels:
+    name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: app
+  template:
+    metadata:
+      name: app
+      labels:
+        name: app
+    spec:
+      containers:
+      - image: ssttehrani/7learn-k8s-demo-app:v2
+        name: app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: http
+        livenessProbe:
+          httpGet:
+            port: http
+            path: /
+        readinessProbe:
+          httpGet:
+            port: http
+            path: /
+          # initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3

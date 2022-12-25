@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  - ReadOnlyMany
+  - ReadWriteMany
+  # - ReadWriteOncePod
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - nfsvers=4.1
+  nfs:
+    # Replace it with your NFS server IP
+    server: 192.168.1.107
+    # Replace it with your NFS export path
+    path: /data/postgres
+  storageClassName: ""

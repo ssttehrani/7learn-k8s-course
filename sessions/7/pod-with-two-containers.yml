@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod-with-two-containers
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+  - image: nginx:alpine
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP

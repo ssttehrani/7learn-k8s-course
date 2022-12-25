@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app
+  namespace: test
+  labels:
+    name: app
+spec:
+  selector:
+    matchLabels:
+      name: app
+  serviceName: app
+  replicas: 3
+  minReadySeconds: 10
+  template:
+    metadata:
+      name: app
+      labels:
+        name: app
+    spec:
+      containers:
+      - image: ssttehrani/7learn-k8s-demo-app:v4
+        name: app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: http
+        volumeMounts:
+        - name: data
+          mountPath: /var/local
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      resources:
+        requests:
+          storage: 1Mi
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: ""

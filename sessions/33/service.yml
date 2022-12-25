@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-generator
+  namespace: test
+spec:
+  selector:
+    name: content-generator
+  ports:
+  - port: 80
+    targetPort: http
+    name: http
+  type: NodePort

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod-with-annotations
+  labels:
+    name: demo
+    project: A
+    env: stg
+  annotations:
+    created-by: team-A
+spec:
+  containers:
+  - image: ssttehrani/7learn-k8s-demo-app:v1
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
