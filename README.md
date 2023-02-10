@@ -1,6 +1,6 @@
 # 7learn K8s course
 
-This repository contains all the files required for my K8s course at [7learn](https://7learn.com/).
+This repository contains all the files required for my K8s course at [7learn](https://7learn.com/course/kubernetes).
 
 ## Contributing
 
